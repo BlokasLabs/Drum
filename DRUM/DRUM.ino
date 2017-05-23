@@ -1,7 +1,20 @@
+/*
+The Bleep Drum v12
+bleeplabs.com
+August 2015
+Dr. Bleep (John-Mike Reed) drbleep@bleeplabs.com
+
+See http://bleeplabs.com/store/bleep-drum-midi/ for more info
+All work licensed under a Creative Commons Attribution-ShareAlike 3.0
+
+Now compatible with current versions of MIDI, bounce and pgmspace.
+It is no longer necessary to edit MIDI.h
+
+*/
+
 
 #include <MIDI.h>
 MIDI_CREATE_DEFAULT_INSTANCE();
-
 
 #include <avr/pgmspace.h>
 #include "samples.h"
@@ -9,13 +22,12 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 #include <Bounce2.h>
 #define BOUNCE_LOCK_OUT
 
-Bounce debouncerRed = Bounce();
-Bounce debouncerGreen = Bounce();
-Bounce debouncerBlue = Bounce();
-Bounce debouncerYellow = Bounce();
+Bounce debouncerRed = Bounce(); 
+Bounce debouncerGreen = Bounce(); 
+Bounce debouncerBlue = Bounce(); 
+Bounce debouncerYellow = Bounce(); 
 
 const char noise_table[] PROGMEM = {};
-
 
 int sample_holder1, sample_holder2;
 byte eee, ee, ef, eef;
@@ -159,7 +171,7 @@ void setup() {
   debouncerGreen.attach(green_pin);
   debouncerGreen.interval(2); // interval in ms
   debouncerYellow.attach(yellow_pin);
-  debouncerYellow.interval(2); // interval in ms
+  debouncerYellow.interval(2); // interval in ms  
   debouncerBlue.attach(blue_pin);
   debouncerBlue.interval(2); // interval in ms
   debouncerRed.attach(red_pin);
@@ -195,12 +207,11 @@ void setup() {
   }
 
   else {
-
     MIDI.begin(0);
   }
 
   MIDI.turnThruOff();
-
+  
   //pinMode (16, INPUT); digitalWrite (16, HIGH);
   digitalWrite(16, HIGH);
   SPI.begin();
@@ -239,3 +250,7 @@ void setup() {
 
 
 }
+
+
+
+
